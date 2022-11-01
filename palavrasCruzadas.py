@@ -52,19 +52,24 @@ class Grid:
         self.direcao = (random.randint(-1, 1), random.randint(-1, 1))
 
     def inserePalavra(self, palavra) -> None:
+        tamanhoPalavra = len(palavra)
 
         # Escolhendo a posição inicial da palavra
         pos = (random.randint(0, self.linhas), random.randint(0, self.colunas))
-        while pos != (' ', ' '):
+        print(f'Tentando posição {pos}')
+        while self.grid[pos[0]][pos[1]] != ' ':
             pos = (random.randint(0, self.linhas),
                    random.randint(0, self.colunas))
+            print(f'Tentando posição {pos}')
 
+        print(f'A posição escolhida foi: {pos}')
         print()
 
         self.escolheDirecao()
 
         for i in range(len(palavra)):
-            self.alteraValor(pos[0] + (i.), pos[1] + i, palavra[i])
+            self.alteraValor(pos[0] + (i * self.direcao[0]),
+                             pos[1] + (i * self.direcao[1]), palavra[i])
 
         self.imprimeGrid()
 
@@ -74,6 +79,7 @@ if __name__ == '__main__':
 
     listaPalavras = ['valor', 'futebol', 'laranja']
 
-    x.alteraValor(1, 2, 'A')
-
-    x.escolheDirecao()
+    #x.alteraValor(1, 2, 'A')
+    # x.escolheDirecao()
+    x.inserePalavra('valor')
+    #print(f'valor é: {x.grid[1][2]}')
