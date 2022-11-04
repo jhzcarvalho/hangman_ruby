@@ -18,6 +18,10 @@ if __name__ == '__main__':
     print(3)
 
     for i in range(5, num+1, 2):
+
+        if (i % 1_000_000 == 0):
+            print(f'Tempo até aqui {time.time() - start_time}')
+
         ehPrimo = True
         raiz = math.sqrt(i)
 
