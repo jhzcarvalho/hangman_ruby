@@ -41,11 +41,24 @@ void addPrimo(struct node *head, int n)
 
 int ehPrimo(struct node *head, int n)
 {
+    // Verifica se o inteiro n é ou não primo
+    int flag = 0;
+
     int raiz = raizInteira(n);
 
-    // struct node *temp;
+    struct node *temp;
+    temp = head->link;
 
-    // temp = head->link;
+    while (temp->link == NULL)
+    {
+        int resto = n % temp->valor;
+
+        if (resto == 0)
+        {
+            return 1;
+        }
+        temp = temp->link;
+    }
 };
 
 int main()
@@ -63,8 +76,16 @@ int main()
         printf("Testando o numero %d\n", i);
     };
 
-    printf("%d\n", raizInteira(4));
-    printf("%d\n", raizInteira(11));
+    // printf("%d\n", raizInteira(4));
+    // printf("%d\n", raizInteira(11));
+
+    printf("Lista final de Primos\n");
+    while (listaPrimos->link = NULL)
+    {
+        printf("%d", listaPrimos->valor);
+
+        listaPrimos = listaPrimos->link;
+    };
 
     return 0;
 }
