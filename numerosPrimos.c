@@ -61,6 +61,14 @@ int ehPrimo(struct node *head, int n)
     }
 };
 
+void imprimeLista(struct node *head)
+{
+    if (head == NULL)
+    {
+        print("Lista Vazia");
+    }
+}
+
 int main()
 {
     int limite;
