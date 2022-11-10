@@ -49,13 +49,16 @@ int ehPrimo(struct node *head, int n)
     struct node *temp;
     temp = head->link;
 
-    while (temp->link == NULL)
+    while (temp->link != NULL)
     {
         int resto = n % temp->valor;
-
-        if (resto == 0)
+        if (n > raiz)
         {
             return 1;
+        }
+        else if (resto == 0)
+        {
+            return 0;
         }
         temp = temp->link;
     }
@@ -64,8 +67,15 @@ int ehPrimo(struct node *head, int n)
 void imprimeLista(struct node *head)
 {
     if (head == NULL)
+        printf("Lista Vazia");
+
+    struct node *ptr = NULL;
+    ptr = head;
+
+    while (ptr != NULL)
     {
-        print("Lista Vazia");
+        printf("%d", ptr->valor);
+        ptr = ptr->link;
     }
 }
 
@@ -82,18 +92,14 @@ int main()
     for (int i = 3; i < limite; i += 2)
     {
         printf("Testando o numero %d\n", i);
+        if (ehPrimo(listaPrimos, i) != 0)
+        {
+            addPrimo(listaPrimos, i);
+        }
     };
-
-    // printf("%d\n", raizInteira(4));
-    // printf("%d\n", raizInteira(11));
 
     printf("Lista final de Primos\n");
-    while (listaPrimos->link = NULL)
-    {
-        printf("%d", listaPrimos->valor);
-
-        listaPrimos = listaPrimos->link;
-    };
+    imprimeLista(listaPrimos);
 
     return 0;
 }
